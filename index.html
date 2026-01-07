@@ -25,19 +25,19 @@
 
     .clock-container {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       position: relative;
     }
 
     .flip-card {
       position: relative;
-      width: 280px;
-      height: 340px;
+      width: 380px;
+      height: 500px;
       background: #e2a9f1;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 20px;
+      border-radius: 25px;
     }
 
     /* Ligne horizontale sur chaque carte */
@@ -47,14 +47,14 @@
       top: 50%;
       left: 0;
       right: 0;
-      height: 3px;
+      height: 4px;
       background: rgba(255, 255, 255, 0.4);
       transform: translateY(-50%);
       z-index: 10;
     }
 
     .flip-card .number {
-      font-size: 220px;
+      font-size: 300px;
       font-weight: 700;
       color: white;
       line-height: 1;
@@ -62,29 +62,29 @@
 
     .day-label {
       position: absolute;
-      bottom: 25px;
-      right: 30px;
+      bottom: 35px;
+      right: 45px;
       color: white;
-      font-size: 32px;
+      font-size: 42px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       z-index: 20;
     }
 
     /* Responsive */
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
       .flip-card {
-        width: 160px;
-        height: 200px;
+        width: 200px;
+        height: 260px;
       }
       .flip-card .number {
-        font-size: 120px;
+        font-size: 150px;
       }
       .day-label {
-        font-size: 18px;
-        bottom: 15px;
-        right: 18px;
+        font-size: 22px;
+        bottom: 20px;
+        right: 25px;
       }
     }
   </style>
