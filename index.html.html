@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flip Clock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: transparent;
+      font-family: 'Roboto Condensed', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .clock-container {
+      display: flex;
+      gap: 10px;
+      position: relative;
+    }
+
+    .flip-card {
+      position: relative;
+      width: 280px;
+      height: 340px;
+      background: #e2a9f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+    }
+
+    /* Ligne horizontale sur chaque carte */
+    .flip-card::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.4);
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+
+    .flip-card .number {
+      font-size: 220px;
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+    }
+
+    .day-label {
+      position: absolute;
+      bottom: 25px;
+      right: 30px;
+      color: white;
+      font-size: 32px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      z-index: 20;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .flip-card {
+        width: 160px;
+        height: 200px;
+      }
+      .flip-card .number {
+        font-size: 120px;
+      }
+      .day-label {
+        font-size: 18px;
+        bottom: 15px;
+        right: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="clock-container">
+    <div class="flip-card" id="hours">
+      <span class="number">00</span>
+    </div>
+    <div class="flip-card" id="minutes">
+      <span class="number">00</span>
+    </div>
+    <div class="day-label" id="day">WEDNESDAY</div>
+  </div>
+
+  <script>
+    const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+    
+    function updateClock() {
+      const now = new Date();
+      const parisTime = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+      const hours = String(parisTime.getHours()).padStart(2, '0');
+      const minutes = String(parisTime.getMinutes()).padStart(2, '0');
+      const dayName = days[parisTime.getDay()];
+
+      document.querySelector('#hours .number').textContent = hours;
+      document.querySelector('#minutes .number').textContent = minutes;
+      document.getElementById('day').textContent = dayName;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
